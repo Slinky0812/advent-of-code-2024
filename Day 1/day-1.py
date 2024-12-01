@@ -46,3 +46,16 @@ for id in range(0, len(left)):
     distance = distance + currentDistance
 
 print(distance)
+
+# PART TWO
+similarityScore = 0
+for i in range(0, len(left)):
+    count = 0
+    for j in range(0, len(right)):
+        if left[i] == right[j]:
+            count += 1
+        
+    score = int(left[i]) * count
+    similarityScore = similarityScore + score
+
+print(similarityScore)
