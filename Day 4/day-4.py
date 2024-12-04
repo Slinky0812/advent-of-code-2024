@@ -48,6 +48,26 @@ def searchBackwardDiagonal(wordSearch):
 
     return totalCount
 
+def countXShapes(wordSearch):
+    totalCount = 0
+    for line in range(1, len(wordSearch)-1):
+        for i in range(1, len(wordSearch[line])-1):
+            if wordSearch[line][i] == "A":
+                if wordSearch[line-1][i-1] == "S" and wordSearch[line+1][i+1] == "M" and wordSearch[line-1][i+1] == "M" and wordSearch[line+1][i-1] == "S":
+                    totalCount += 1
+
+                if wordSearch[line-1][i-1] == "S" and wordSearch[line+1][i+1] == "M" and wordSearch[line-1][i+1] == "S" and wordSearch[line+1][i-1] == "M":
+                    totalCount += 1
+
+                if wordSearch[line-1][i-1] == "M" and wordSearch[line+1][i+1] == "S" and wordSearch[line-1][i+1] == "S" and wordSearch[line+1][i-1] == "M":
+                    totalCount += 1
+
+                if wordSearch[line-1][i-1] == "M" and wordSearch[line+1][i+1] == "S" and wordSearch[line-1][i+1] == "M" and wordSearch[line+1][i-1] == "S":
+                    totalCount += 1
+
+    return totalCount
+
+
 xmasCount = 0
 
 with open("word-search.txt") as file:
@@ -58,4 +78,8 @@ xmasCount = xmasCount + searchVertical(wordSearch)
 xmasCount = xmasCount + searcForwardhDiagonal(wordSearch)
 xmasCount = xmasCount + searchBackwardDiagonal(wordSearch)
 
-print(xmasCount)
+# print(xmasCount)
+
+# PART TWO
+xShapedMAS = countXShapes(wordSearch)
+print(xShapedMAS)
